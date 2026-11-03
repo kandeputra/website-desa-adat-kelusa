@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Desa Adat Kelusa</title>
+<meta name="description" content="Website resmi Desa Adat Kelusa, Kecamatan Payangan, Kabupaten Gianyar, Bali.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: website multi-halaman (hash routing) — menu mengikuti pola desaadatkesiman.or.id: Beranda · Profil · Lembaga Adat · Informasi · Produk Hukum · Galeri · Berkunjung · Kontak · Pengaduan */
+:root{
+  --bg:#F5F6F0;--surface:#FFFFFF;--ink:#1D231F;--muted:#5C665F;--line:#DCE0D6;
+  --sawah:#2E5B3B;--sawah-soft:#E4ECE2;--prada:#A87B22;--api:#B9431A;--api-soft:#F6E5DC;
+  --hero-ink:#F4F2EA;--hero-bg:#1F2B23;--gold:#D7AE57;
+  --display:"Marcellus","Cormorant Garamond",Georgia,serif;
+  --body:"Karla","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141916;--surface:#1B221D;--ink:#E7EAE3;--muted:#A3ADA5;--line:#2E3831;
+  --sawah:#8CC39A;--sawah-soft:#22312A;--prada:#D7AE57;--api:#EE8155;--api-soft:#3A251C;
+  --hero-ink:#F1EFE6;--hero-bg:#0F1511;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141916;--surface:#1B221D;--ink:#E7EAE3;--muted:#A3ADA5;--line:#2E3831;
+  --sawah:#8CC39A;--sawah-soft:#22312A;--prada:#D7AE57;--api:#EE8155;--api-soft:#3A251C;
+  --hero-ink:#F1EFE6;--hero-bg:#0F1511;color-scheme:dark}
+
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--hero-bg)}
+a{color:var(--sawah)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--prada);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--prada)}
+.lead{color:var(--muted);max-width:62ch}
+.prose{display:grid;gap:16px;max-width:68ch}
+.isi{display:inline-block;font-family:var(--mono);font-size:12px;padding:1px 7px;border:1px dashed var(--prada);border-radius:4px;color:var(--prada);white-space:nowrap;font-style:normal}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--body)}
+.btn.primary{background:var(--gold);color:#1D231F}
+.btn.ghost{border-color:rgba(255,255,255,.35);color:var(--hero-ink)}
+.btn.line{border-color:var(--line);color:var(--ink);background:var(--surface)}
+.more{font-family:var(--mono);font-size:13px;text-decoration:none;white-space:nowrap}
+
+/* ===== Header & menu ===== */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--hero-bg);color:var(--hero-ink);border-bottom:1px solid rgba(255,255,255,.08)}
+.top .wrap{display:flex;align-items:center;gap:16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;flex-shrink:0}
+.brand svg{width:36px;height:36px}
+.brand b{font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:.02em;display:block;line-height:1.1}
+.brand small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;opacity:.7;text-transform:uppercase}
+.menu{display:flex;gap:2px;margin-left:auto;list-style:none;padding:0;margin-block:0}
+.menu>li{position:relative}
+.menu a,.menu button{color:var(--hero-ink);text-decoration:none;font-size:14.5px;padding:8px 10px;border-radius:6px;white-space:nowrap;background:none;border:0;font-family:var(--body);cursor:pointer;display:block;opacity:.85}
+.menu a:hover,.menu button:hover,.menu .on>a,.menu .on>button{opacity:1;background:rgba(255,255,255,.09)}
+.menu button::after{content:"";display:inline-block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-3px);margin-left:8px}
+.sub{position:absolute;top:100%;left:0;min-width:230px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:6px;list-style:none;margin:6px 0 0;box-shadow:0 14px 30px rgba(0,0,0,.18);display:none;max-height:70vh;overflow:auto}
+.sub a{color:var(--ink);opacity:1;padding:8px 12px}
+.sub a:hover{background:var(--sawah-soft)}
+.menu li.open .sub{display:block}
+.burger{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.3);color:var(--hero-ink);border-radius:8px;padding:8px 12px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;cursor:pointer}
+@media (max-width:980px){
+  .burger{display:block}
+  .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;background:var(--hero-bg);padding:8px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));max-height:calc(100vh - 70px);overflow:auto;border-bottom:1px solid rgba(255,255,255,.1)}
+  .top.nav-open .menu{display:flex}
+  .sub{position:static;box-shadow:none;background:transparent;border:0;border-left:1px solid rgba(255,255,255,.18);border-radius:0;margin:0 0 6px 12px;max-height:none}
+  .sub a{color:var(--hero-ink);opacity:.8}
+  .sub a:hover{background:rgba(255,255,255,.08)}
+}
+
+/* ===== Page header (sub pages) ===== */
+.phead{background:var(--hero-bg);color:var(--hero-ink);position:relative}
+.phead .wrap{padding-block:48px 56px;display:grid;gap:10px}
+.phead h1{font-size:clamp(34px,5vw,56px)}
+.phead p{opacity:.8;max-width:60ch}
+.crumb{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--gold)}
+.crumb a{color:var(--gold);text-decoration:none}
+.zig::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;
+  background:linear-gradient(135deg,transparent 50%,var(--bg) 50%) 0 0/14px 14px repeat-x,linear-gradient(225deg,transparent 50%,var(--bg) 50%) 0 0/14px 14px repeat-x}
+.pbody{padding-block:56px 88px}
+.page[hidden]{display:none!important}
+
+/* ===== Beranda: slider ===== */
+.slider{position:relative;background:var(--hero-bg);color:var(--hero-ink);overflow:hidden}
+.slide{display:grid;grid-template-columns:1.2fr .9fr;gap:48px;align-items:center;padding-block:64px 84px}
+.slide[hidden]{display:none}
+.slide .salam{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
+.slide h1,.slide h2{font-size:clamp(40px,6.4vw,78px);margin:12px 0 10px}
+.slide p.tag{font-size:19px;max-width:46ch;opacity:.88}
+.slide .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.vis-hero{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:200px 200px 16px 16px;border:1px solid rgba(215,174,87,.35);overflow:hidden;display:flex;align-items:flex-end;padding:26px}
+.vis-hero .cap{position:relative;font-size:14px;line-height:1.5;color:#F4F2EA}
+.vis-hero .cap b{display:block;font-family:var(--display);font-weight:400;font-size:24px;margin-bottom:2px}
+.vh-api{background:radial-gradient(120% 80% at 50% 100%,#B9431A 0%,#7A2A12 38%,#2A1A12 70%,#1F2B23 100%)}
+.vh-api canvas{position:absolute;inset:0;width:100%;height:100%}
+.vh-sawah{background:linear-gradient(180deg,#30483A 0 28%,transparent 28%),repeating-linear-gradient(172deg,#3E7A4E 0 12px,#2B5A3A 12px 24px)}
+.vh-sawah::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,21,17,.75))}
+.vh-aci{background:conic-gradient(from 200deg at 50% 62%,#7A2A12,#D7AE57,#1F2B23,#7A2A12)}
+.vh-aci::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,21,17,.8))}
+.dots{position:absolute;bottom:34px;left:0;right:0;display:flex;gap:8px;justify-content:center;z-index:2}
+.dots button{width:28px;height:4px;border-radius:2px;border:0;background:rgba(255,255,255,.3);cursor:pointer;padding:0}
+.dots button[aria-current="true"]{background:var(--gold)}
+
+/* Bendesa / sambutan */
+.sambutan{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:start}
+.foto{aspect-ratio:3/4;max-width:100%;border-radius:12px;background:var(--sawah-soft);border:1px dashed var(--prada);display:grid;place-items:center;text-align:center;padding:16px;color:var(--prada);font-family:var(--mono);font-size:12px}
+.sambutan .nama{font-family:var(--display);font-size:22px;margin-top:12px}
+.sambutan .jab{color:var(--muted);font-size:14px}
+.om{font-family:var(--display);font-size:clamp(30px,4vw,44px);color:var(--prada)}
+
+/* Lists */
+.sec{padding-block:72px 0}
+.sechead{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.sechead h2{font-size:clamp(28px,3.6vw,40px)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.post{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:2px solid var(--ink);text-decoration:none;color:var(--ink)}
+.post:hover h3{color:var(--sawah)}
+.post time,.row time{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.post h3{font-size:22px}
+.post p{color:var(--muted);font-size:15.5px}
+.tagk{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sawah)}
+.rows{display:grid;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.row b{font-weight:700}
+.row span.s{display:block;color:var(--muted);font-size:14.5px}
+.row .kode{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-align:right}
+
+/* Kalender */
+.kal{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.kal div{padding:22px;border-top:1px solid var(--line);border-left:1px solid var(--line);display:grid;gap:6px;align-content:start;margin:-1px 0 0 -1px}
+.kal .tgl{font-family:var(--mono);font-size:13px;color:var(--prada);font-variant-numeric:tabular-nums}
+.kal b{font-family:var(--display);font-weight:400;font-size:23px}
+.kal span{color:var(--muted);font-size:14.5px}
+.kal .hari{font-family:var(--mono);font-size:12px;color:var(--sawah)}
+.kal .api b{color:var(--api)}
+.note{font-size:14px;color:var(--muted);margin-top:14px}
+
+/* Profil */
+.timeline{list-style:none;margin:0;padding:0;display:grid}
+.timeline li{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+.timeline li:last-child{border-bottom:1px solid var(--line)}
+.timeline .th{font-family:var(--mono);font-size:13px;color:var(--prada);padding-top:3px}
+.timeline b{display:block}
+.timeline span{color:var(--muted);font-size:15.5px}
+.visi{font-family:var(--display);font-size:clamp(24px,3vw,34px);line-height:1.3;padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:30ch}
+.misi{list-style:none;padding:0;margin:0;counter-reset:m;display:grid}
+.misi li{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.misi li::before{counter-increment:m;content:counter(m,decimal-leading-zero);font-family:var(--mono);color:var(--prada);font-size:14px;padding-top:2px}
+.thk{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.thk div{padding:22px;border-left:1px solid var(--line)}
+.thk div:first-child{border-left:0;padding-left:0}
+.thk b{font-family:var(--display);font-weight:400;font-size:26px;display:block}
+.thk span{color:var(--muted);font-size:15px}
+.thk em{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--prada)}
+.prajuru{display:grid;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.prajuru div{display:flex;justify-content:space-between;gap:16px;padding:13px 18px;border-top:1px solid var(--line);flex-wrap:wrap}
+.prajuru div:first-child{border-top:0;background:var(--sawah-soft)}
+.prajuru small{display:block;color:var(--muted);font-size:13.5px}
+
+/* Lembaga */
+.lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lcard{display:grid;gap:8px;align-content:start;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--surface);text-decoration:none;color:var(--ink)}
+.lcard:hover{border-color:var(--sawah)}
+.lcard b{font-family:var(--display);font-weight:400;font-size:22px}
+.lcard span{color:var(--muted);font-size:14.5px}
+.ldetail{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+.fakta-l{display:grid;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.fakta-l div{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid var(--line);flex-wrap:wrap}
+.fakta-l div:first-child{border-top:0}
+.fakta-l dt{color:var(--muted);font-size:14.5px}
+.fakta-l dd{margin:0;text-align:right}
+ul.tugas{margin:0;padding-left:20px;display:grid;gap:6px}
+
+/* Banjar & Pura */
+.banjar{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.banjar div{padding:22px;border-radius:12px;background:var(--sawah-soft);display:grid;gap:4px}
+.banjar b{font-family:var(--display);font-weight:400;font-size:24px;color:var(--sawah)}
+.banjar span{font-size:14.5px;color:var(--muted)}
+.pura{display:grid;grid-template-columns:1.1fr 1fr;background:var(--api-soft);border-radius:16px;overflow:hidden}
+.pura .kiri{padding:40px;display:grid;gap:16px;align-content:start;min-width:0}
+.pura .kiri h3{font-size:36px;color:var(--api)}
+.pura .kanan{padding:40px;background:var(--surface);min-width:0}
+.mandala div{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.mandala div:first-child{border-top:0}
+.mandala b{font-family:var(--display);font-weight:400;font-size:19px}
+.mandala span{color:var(--muted);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13.5px;padding:4px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+
+/* Galeri */
+.galeri{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.galeri figure{margin:0;display:grid;gap:6px}
+.galeri .ph{aspect-ratio:1;max-width:100%;border-radius:10px}
+.galeri figcaption{font-size:13.5px;color:var(--muted)}
+.g1{background:repeating-linear-gradient(170deg,var(--sawah) 0 10px,var(--sawah-soft) 10px 22px)}
+.g2{background:radial-gradient(circle at 50% 70%,var(--api) 0 22%,var(--api-soft) 23%)}
+.g3{background:linear-gradient(180deg,var(--sawah-soft) 0 55%,var(--sawah) 55%)}
+.g4{background:conic-gradient(from 45deg,var(--prada),var(--api-soft),var(--prada))}
+.video{aspect-ratio:16/9;max-width:100%;border-radius:12px;background:var(--hero-bg);display:grid;place-items:center;color:var(--gold);font-family:var(--mono);font-size:13px}
+
+/* Kunjung */
+.etika{list-style:none;margin:0;padding:0;counter-reset:e;display:grid}
+.etika li{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+.etika li::before{counter-increment:e;content:counter(e);font-family:var(--mono);font-size:13px;color:var(--prada);padding-top:2px}
+.etika b{display:block}
+.etika span{color:var(--muted);font-size:15px}
+.jarak{display:grid;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.jarak div{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid var(--line)}
+.jarak div:first-child{border-top:0}
+.jarak span:last-child{font-family:var(--mono);font-size:14px}
+
+/* Form pengaduan */
+.form{display:grid;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px}
+.form label{display:grid;gap:6px;font-weight:700;font-size:15px}
+.form input,.form select,.form textarea{font:inherit;font-weight:400;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.form textarea{min-height:130px;resize:vertical}
+.hasil{white-space:pre-wrap;font-family:var(--mono);font-size:13.5px;background:var(--sawah-soft);border-radius:10px;padding:16px;overflow-x:auto}
+
+/* Kontak list */
+.kontakl{display:grid;gap:0;border-top:1px solid var(--line)}
+.kontakl div{display:grid;grid-template-columns:160px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.kontakl dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.kontakl dd{margin:0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.copy{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+
+/* Footer */
+footer{background:var(--hero-bg);color:var(--hero-ink);margin-top:0}
+footer .wrap.cols{display:grid;grid-template-columns:1.3fr 1fr 1.2fr;gap:40px;padding-block:56px}
+footer h3{font-size:19px;margin-bottom:12px}
+footer p,footer li{color:rgba(244,242,234,.72);font-size:15px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+footer .cols>div:nth-child(2) ul{grid-template-columns:1fr 1fr;column-gap:16px}
+footer a{color:var(--hero-ink);text-decoration:none;opacity:.85}
+footer a:hover{opacity:1;text-decoration:underline}
+footer .bawah{border-top:1px solid rgba(255,255,255,.1)}
+footer .bawah .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px;font-size:13.5px;color:rgba(244,242,234,.6)}
+
+@media (max-width:900px){
+  .slide,.sambutan,.grid2,.ldetail,.pura{grid-template-columns:1fr}
+  .vis-hero{aspect-ratio:16/10;border-radius:16px}
+  .grid3,.lgrid,.kal,.galeri,.banjar{grid-template-columns:1fr 1fr}
+  .foto{max-width:220px}
+  footer .wrap.cols{grid-template-columns:1fr 1fr}
+  footer .wrap.cols>div:first-child{grid-column:1/-1}
+  .brand small{display:none}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .grid3,.lgrid,.kal,.thk,.banjar,footer .wrap.cols{grid-template-columns:1fr}
+  .thk div{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .thk div:first-child{border-top:0}
+  .row{grid-template-columns:1fr;gap:2px}
+  .row .kode{text-align:left}
+  .timeline li,.mandala div,.kontakl div{grid-template-columns:1fr;gap:4px}
+  .pura .kiri,.pura .kanan{padding:26px 20px}
+  .slide{padding-block:44px 76px}
+}
+
+/* Kelusa x Ketewel additions */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.band{position:relative;display:grid;gap:10px;align-content:end;min-height:260px;padding:30px;border-radius:16px;text-decoration:none;color:#F4F2EA;overflow:hidden}
+.band h2{font-size:clamp(26px,3.2vw,36px)}
+.band p{opacity:.85;max-width:44ch;font-size:15.5px}
+.band .eyebrow,.band .more{color:#D7AE57}
+.band::before{content:"";position:absolute;inset:0;z-index:-1}
+.b-budaya{background:radial-gradient(90% 90% at 85% 10%,#B9431A 0,#5A2210 45%,#1F2B23 100%)}
+.b-wisata{background:linear-gradient(180deg,rgba(15,21,17,.1),rgba(15,21,17,.85)),repeating-linear-gradient(172deg,#3E7A4E 0 12px,#2B5A3A 12px 24px)}
+.band:hover h2{text-decoration:underline;text-underline-offset:5px}
+.wcard{display:grid;gap:10px;align-content:start;text-decoration:none;color:var(--ink)}
+.wcard .ph{aspect-ratio:4/3;max-width:100%;border-radius:12px}
+.wcard h3{font-size:23px}
+.wcard p{color:var(--muted);font-size:15.5px}
+.faq{display:grid;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;padding:18px 36px 18px 0;font-weight:700;list-style:none;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:14px;font-family:var(--mono);font-size:20px;color:var(--prada)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 18px;color:var(--muted);max-width:70ch}
+.stat{display:grid;grid-template-columns:repeat(4,1fr);margin:0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.stat div{padding:18px 20px;border-left:1px solid var(--line);min-width:0}
+.stat div:first-child{border-left:0}
+.stat dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.stat dd{margin:4px 0 0;font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+.stat dd small{display:block;font-family:var(--body);font-size:13px;color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tbl table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+.tbl th,.tbl td{padding:11px 16px;border-bottom:1px solid var(--line);text-align:left}
+.tbl th{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.tbl .n{text-align:right;font-variant-numeric:tabular-nums}
+.tbl .grp{background:var(--sawah-soft);font-weight:700;color:var(--sawah)}
+.tbl tr:last-child td{border-bottom:0}
+.sosmed{display:flex;flex-wrap:wrap;gap:8px}
+.sosmed span{font-family:var(--mono);font-size:12px;padding:4px 10px;border:1px solid rgba(255,255,255,.25);border-radius:999px;color:rgba(244,242,234,.85)}
+@media (max-width:900px){.duo{grid-template-columns:1fr}.stat{grid-template-columns:1fr 1fr}.stat div:nth-child(3){border-left:0}.stat div:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:1100px) and (min-width:981px){.menu a,.menu button{font-size:13.5px;padding:8px 7px}.brand small{display:none}}
+</style>
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#beranda" aria-label="Desa Adat Kelusa, beranda">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M6 38V14l6-4v-4h4l4-4 4 4h4v4l6 4v24" fill="none" stroke="#D7AE57" stroke-width="2"/>
+        <path d="M20 33c-4 0-6-3-6-6 0-4 4-6 4-10 2 2 3 4 3 6 1-1 2-2 2-4 3 3 3 6 3 8 0 3-2 6-6 6z" fill="#EE8155"/>
+      </svg>
+      <span><b>Desa Adat Kelusa</b><small>Payangan · Gianyar · Bali</small></span>
+    </a>
+    <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="menu">MENU</button>
+    <ul class="menu" id="menu" aria-label="Menu utama">
+      <li data-grp="beranda"><a href="#beranda">Beranda</a></li>
+      <li data-grp="profil"><button type="button" aria-expanded="false">Tentang Desa</button>
+        <ul class="sub">
+          <li><a href="#sejarah">Sejarah Desa Adat</a></li>
+          <li><a href="#visi-misi">Visi Misi</a></li>
+          <li><a href="#demografi">Demografi</a></li>
+          <li><a href="#prajuru">Struktur Prajuru</a></li>
+          <li><a href="#banjar">Banjar Adat</a></li>
+          <li><a href="#prestasi">Prestasi</a></li>
+        </ul></li>
+      <li data-grp="lembaga"><button type="button" aria-expanded="false">Lembaga Adat</button>
+        <ul class="sub" id="sub-lembaga"></ul></li>
+      <li data-grp="keagamaan"><button type="button" aria-expanded="false">Keagamaan</button>
+        <ul class="sub">
+          <li><a href="#pura">Pura</a></li>
+          <li><a href="#kalender">Kalender Rerahinan</a></li>
+          <li><a href="#artikel">Budaya &amp; Tradisi</a></li>
+        </ul></li>
+      <li data-grp="pariwisata"><button type="button" aria-expanded="false">Pariwisata</button>
+        <ul class="sub">
+          <li><a href="#objek-wisata">Objek Wisata</a></li>
+          <li><a href="#berkunjung">Panduan Berkunjung</a></li>
+        </ul></li>
+      <li data-grp="laporan"><button type="button" aria-expanded="false">Keuangan &amp; Laporan</button>
+        <ul class="sub">
+          <li><a href="#laporan-keuangan">Laporan Keuangan</a></li>
+          <li><a href="#laporan-perencanaan">Laporan Perencanaan</a></li>
+          <li><a href="#pembangunan">Laporan Pembangunan</a></li>
+        </ul></li>
+      <li data-grp="informasi"><button type="button" aria-expanded="false">Informasi</button>
+        <ul class="sub">
+          <li><a href="#berita">Berita</a></li>
+          <li><a href="#pengumuman">Pengumuman</a></li>
+          <li><a href="#artikel">Artikel</a></li>
+          <li><a href="#produk-hukum">Produk Hukum</a></li>
+          <li><a href="#perpustakaan">Perpustakaan Digital</a></li>
+          <li><a href="#foto">Galeri Foto</a></li>
+          <li><a href="#video">Galeri Video</a></li>
+        </ul></li>
+      <li data-grp="layanan"><button type="button" aria-expanded="false">Layanan</button>
+        <ul class="sub">
+          <li><a href="#faq">Tanya Jawab (FAQ)</a></li>
+          <li><a href="#pengaduan">Pengaduan</a></li>
+          <li><a href="#kontak">Kontak Kami</a></li>
+        </ul></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= BERANDA ================= -->
+<div class="page" data-page="beranda" data-grp="beranda">
+  <section class="slider zig" aria-roledescription="carousel" aria-label="Sorotan Desa Adat Kelusa">
+    <div class="wrap">
+      <div class="slide" data-slide="0">
+        <div>
+          <p class="salam">Om Swastyastu</p>
+          <h1>Desa Adat Kelusa</h1>
+          <p class="tag">Pengempon Pura Hyang Api, salah satu pura tertua di Bali, di perbukitan hijau Payangan.</p>
+          <div class="cta"><a class="btn primary" href="#sejarah">Sejarah Desa</a><a class="btn ghost" href="#pura">Pura Hyang Api</a></div>
+        </div>
+        <div class="vis-hero vh-api" role="img" aria-label="Ilustrasi nyala api suci"><canvas id="api" aria-hidden="true"></canvas><p class="cap"><b>Pura Hyang Api</b>Pemujaan Dewa Agni, diperkirakan ada sejak abad ke-8 Masehi.</p></div>
+      </div>
+      <div class="slide" data-slide="1" hidden>
+        <div>
+          <p class="salam">Palemahan</p>
+          <h2>Wewidangan yang hijau dan lestari</h2>
+          <p class="tag">Sawah, subak, dan sumber air suci dijaga bersama melalui awig-awig dan gotong royong krama.</p>
+          <div class="cta"><a class="btn primary" href="#berkunjung">Panduan Berkunjung</a></div>
+        </div>
+        <div class="vis-hero vh-sawah" role="img" aria-label="Ilustrasi terasering sawah"><p class="cap"><b>Sawah Payangan</b>Kawasan Ulapan: Ubud, Tegallalang, dan Payangan.</p></div>
+      </div>
+      <div class="slide" data-slide="2" hidden>
+        <div>
+          <p class="salam">Parahyangan</p>
+          <h2>Tradisi Aci Keburan</h2>
+          <p class="tag">Dilaksanakan saat piodalan Pura Hyang Api, setiap 210 hari bertepatan dengan rangkaian Kuningan.</p>
+          <div class="cta"><a class="btn primary" href="#artikel-aci-keburan">Baca Artikel</a></div>
+        </div>
+        <div class="vis-hero vh-aci" role="img" aria-label="Ilustrasi upacara piodalan"><p class="cap"><b>Piodalan</b>Tiap 210 hari menurut pawukon.</p></div>
+      </div>
+    </div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <div class="wrap">
+    <section class="sec">
+      <div class="sambutan">
+        <div>
+          <div class="foto">Foto Bendesa Adat<br>(unggah foto resmi)</div>
+          <p class="nama">Bendesa Adat Kelusa</p>
+          <p class="jab"><span class="isi">nama &amp; masa bakti</span></p>
+        </div>
+        <div class="prose">
+          <p class="om">Om Swastyastu</p>
+          <h2 style="font-size:clamp(28px,3.6vw,40px)">Selamat datang di website Desa Adat Kelusa</h2>
+          <p>Website ini kami hadirkan sebagai sumber informasi resmi bagi krama desa, krama tamiu, dan masyarakat luas. Di sini tersedia kabar kegiatan, pengumuman paruman, produk hukum adat, serta informasi lembaga dan pura di wewidangan Desa Adat Kelusa.</p>
+          <p>Semoga keterbukaan informasi ini memperkuat rasa menyama braya dan membantu kita bersama menjaga parahyangan, pawongan, dan palemahan desa.</p>
+          <p style="color:var(--muted);font-size:14px">Teks sambutan adalah draf <span class="isi">sesuaikan dengan sambutan Bendesa</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="duo">
+        <a class="band b-budaya" href="#artikel"><span class="eyebrow">Budaya &amp; Tradisi</span><h2>Menjaga warisan leluhur</h2><p>Pura Hyang Api, Aci Keburan, dan rerahinan yang dijalankan krama dari generasi ke generasi.</p><span class="more">Jelajahi tradisi →</span></a>
+        <a class="band b-wisata" href="#objek-wisata"><span class="eyebrow">Wisata Kelusa</span><h2>Pura bersejarah &amp; alam Payangan</h2><p>Wisata spiritual, sumber air suci, dan sawah hijau di utara Ubud.</p><span class="more">Lihat objek wisata →</span></a>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sechead"><div><p class="eyebrow">Kabar Kelusa</p><h2>Berita Terbaru</h2></div><a class="more" href="#berita">Semua Berita →</a></div>
+      <div class="grid3" id="home-berita"></div>
+    </section>
+
+    <section class="sec">
+      <div class="grid2">
+        <div>
+          <div class="sechead"><h2>Pengumuman</h2><a class="more" href="#pengumuman">Lihat Semua →</a></div>
+          <div class="rows" id="home-pengumuman"></div>
+        </div>
+        <div>
+          <div class="sechead"><h2>Produk Hukum</h2><a class="more" href="#produk-hukum">Lihat Semua →</a></div>
+          <div class="rows" id="home-hukum"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sechead"><div><p class="eyebrow">Beragam Kawasan Wisata</p><h2>Setiap sudut punya cerita</h2></div><a class="more" href="#objek-wisata">Semua objek wisata →</a></div>
+      <div class="grid3" id="home-wisata"></div>
+    </section>
+
+    <section class="sec">
+      <div class="sechead"><div><p class="eyebrow">Kalender Rerahinan</p><h2>Hari Suci Terdekat</h2></div><a class="more" href="#kalender">Kalender lengkap →</a></div>
+      <div class="kal" data-kal="3"></div>
+    </section>
+
+    <section class="sec" style="padding-bottom:88px">
+      <div class="sechead"><div><p class="eyebrow">Tanya Jawab</p><h2>Pertanyaan seputar Desa Adat Kelusa</h2></div><a class="more" href="#faq">Semua pertanyaan →</a></div>
+      <div class="faq" data-faq="4"></div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= PROFIL ================= -->
+<div class="page" data-page="sejarah" data-grp="profil" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Tentang Desa</p><h1>Sejarah Desa Adat Kelusa</h1><p>Dari perjalanan suci Maharsi Markandya hingga desa adat masa kini.</p></div></div>
+  <div class="wrap pbody grid2">
+    <div class="prose">
+      <p>Penuturan tetua dan kajian sejarah mengaitkan asal-usul Kelusa dengan dharmayatra dan tirtayatra Maharsi Markandya, resi yang menyebarkan ajaran Siwa di Bali. Di tempat inilah beliau diyakini menanam pohon beringin, dan di kawasan ini pula berdiri Pura Hyang Api.</p>
+      <p>Desa Kelusa berada di Kecamatan Payangan, Kabupaten Gianyar, dengan luas sekitar 6,5 km². Di wilayah desa dinas Kelusa terdapat tiga desa adat: Desa Adat Kelusa, Desa Adat Keliki Kawan, dan Desa Adat Yeh Tengah. Desa Adat Kelusa mewilayahi empat banjar adat: Ayah, Triwangsa, Roban, dan Peliatan.</p>
+      <p>Kehidupan krama diatur oleh awig-awig desa adat yang disebut <i>Murdha Gitta</i>, dilengkapi pararem hasil paruman sesuai kebutuhan zaman.</p>
+      <p><span class="isi">lengkapi dari purana / babad desa</span></p>
+    </div>
+    <ol class="timeline" aria-label="Linimasa sejarah">
+      <li><span class="th">± Abad 8 M</span><div><b>Masa Maharsi Markandya</b><span>Pura Hyang Api diperkirakan berdiri pada era penyebaran ajaran Siwa di Bali.</span></div></li>
+      <li><span class="th">Masa kerajaan</span><div><b>Terbentuknya desa pakraman</b><span>Krama Kelusa menjadi pengempon Pura Hyang Api dan Kahyangan Tiga. <span class="isi">lengkapi</span></span></div></li>
+      <li><span class="th">1981</span><div><b>Awig-awig Murdha Gitta</b><span>Awig-awig Desa Pakraman Kelusa dibukukan sebagai pedoman tertulis.</span></div></li>
+      <li><span class="th">2019</span><div><b>Perda Bali No. 4 Tahun 2019</b><span>Desa Pakraman resmi bernama Desa Adat dan diakui sebagai subjek hukum.</span></div></li>
+      <li><span class="th">Kini</span><div><b>Desa adat yang terbuka</b><span>Pelestarian tradisi berjalan seiring layanan krama dan keterbukaan informasi.</span></div></li>
+    </ol>
+  </div>
+</div>
+
+<div class="page" data-page="visi-misi" data-grp="profil" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Tentang Desa</p><h1>Visi Misi</h1><p>Arah pembangunan Desa Adat Kelusa berlandaskan Tri Hita Karana.</p></div></div>
+  <div class="wrap pbody" style="display:grid;gap:40px">
+    <div><p class="eyebrow" style="margin-bottom:12px">Visi</p>
+      <p class="visi">Desa Adat Kelusa yang ajeg, sukerta, dan lestari, berlandaskan Tri Hita Karana.</p>
+      <p class="note">Visi dan misi di halaman ini adalah draf <span class="isi">sahkan melalui paruman desa</span></p></div>
+    <div class="grid2">
+      <div><p class="eyebrow" style="margin-bottom:12px">Misi</p>
+        <ol class="misi">
+          <li>Menjaga kesucian dan kelestarian Pura Hyang Api serta Kahyangan Tiga.</li>
+          <li>Menegakkan awig-awig dan pararem secara adil dan terbuka.</li>
+          <li>Memperkuat kebersamaan krama, sekaa, dan banjar adat.</li>
+          <li>Mengembangkan ekonomi krama melalui LPD dan BUPDA.</li>
+          <li>Melestarikan lingkungan, sawah, dan sumber air wewidangan desa.</li>
+        </ol></div>
+      <div><p class="eyebrow" style="margin-bottom:12px">Landasan</p>
+        <div class="thk" style="grid-template-columns:1fr">
+          <div style="border-left:0;padding-left:0"><em>Hubungan dengan Tuhan</em><b>Parahyangan</b><span>Pura, upacara, dan tradisi suci.</span></div>
+          <div style="border-left:0;padding-left:0;border-top:1px solid var(--line)"><em>Hubungan antarmanusia</em><b>Pawongan</b><span>Prajuru, banjar, sekaa, dan krama.</span></div>
+          <div style="border-left:0;padding-left:0;border-top:1px solid var(--line)"><em>Hubungan dengan alam</em><b>Palemahan</b><span>Wewidangan, sawah, dan lingkungan.</span></div>
+        </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" data-page="prajuru" data-grp="profil" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Tentang Desa</p><h1>Prajuru Desa Adat</h1><p>Susunan kelembagaan mengikuti Perda Provinsi Bali No. 4 Tahun 2019 tentang Desa Adat.</p></div></div>
+  <div class="wrap pbody grid2">
+    <div class="prajuru" aria-label="Struktur prajuru">
+      <div><span><b>Bendesa Adat</b><small>Pemimpin desa adat</small></span><span class="isi">nama</span></div>
+      <div><span><b>Petajuh</b><small>Wakil bendesa</small></span><span class="isi">nama</span></div>
+      <div><span><b>Penyarikan</b><small>Sekretaris</small></span><span class="isi">nama</span></div>
+      <div><span><b>Patengen</b><small>Bendahara</small></span><span class="isi">nama</span></div>
+      <div><span><b>Sabha Desa</b><small>Lembaga pertimbangan</small></span><span class="isi">ketua</span></div>
+      <div><span><b>Kertha Desa</b><small>Penyelesaian wicara adat</small></span><span class="isi">ketua</span></div>
+      <div><span><b>Kelian Banjar Adat</b><small>Empat banjar adat</small></span><a href="#banjar">Lihat banjar →</a></div>
+    </div>
+    <div class="prose">
+      <h2 style="font-size:28px">Tugas prajuru</h2>
+      <p>Prajuru desa adat memimpin pelaksanaan awig-awig, mengatur upacara di kahyangan desa, mengelola padruwen (harta milik) desa adat, serta menyelesaikan wicara adat melalui musyawarah.</p>
+      <p>Prajuru dipilih atau ditetapkan melalui paruman sesuai awig-awig, untuk masa bakti tertentu. <span class="isi">masa bakti</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="page" data-page="pembangunan" data-grp="laporan" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Keuangan &amp; Laporan</p><h1>Laporan Pembangunan</h1><p>Program fisik dan non-fisik desa adat, disusun terbuka untuk krama.</p></div></div>
+  <div class="wrap pbody">
+    <p class="note" style="margin:0 0 20px">Daftar berikut adalah contoh format <span class="isi">ganti dengan program asli</span></p>
+    <div class="rows">
+      <div class="row"><time>Parahyangan</time><div><b>Perbaikan bale di jaba Pura Hyang Api</b><span class="s">Swadaya krama dan dana punia</span></div><span class="kode">Rencana</span></div>
+      <div class="row"><time>Palemahan</time><div><b>Penataan tempat pemilahan sampah banjar</b><span class="s">Kerja sama empat banjar adat</span></div><span class="kode">Berjalan</span></div>
+      <div class="row"><time>Pawongan</time><div><b>Pelatihan pecalang dan yowana</b><span class="s">Keamanan adat saat upacara besar</span></div><span class="kode">Rencana</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= LEMBAGA (diisi skrip) ================= -->
+<div class="page" data-page="lembaga" data-grp="lembaga" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Lembaga Adat</p><h1>Lembaga Adat</h1><p>Lembaga dan sekaa yang menjalankan kehidupan adat Desa Adat Kelusa.</p></div></div>
+  <div class="wrap pbody"><div class="lgrid" id="lembaga-grid"></div></div>
+</div>
+<div id="lembaga-pages"></div>
+
+<!-- ================= INFORMASI ================= -->
+<div class="page" data-page="berita" data-grp="informasi" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Informasi</p><h1>Berita</h1><p>Kabar kegiatan desa adat. Berita di bawah adalah contoh tata letak.</p></div></div>
+  <div class="wrap pbody"><div class="grid3" id="list-berita"></div></div>
+</div>
+<div class="page" data-page="artikel" data-grp="informasi" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Informasi</p><h1>Artikel</h1><p>Tulisan tentang sejarah, pura, dan tradisi Desa Adat Kelusa.</p></div></div>
+  <div class="wrap pbody"><div class="grid3" id="list-artikel"></div></div>
+</div>
+<div id="artikel-pages"></div>
+<div class="page" data-page="pengumuman" data-grp="informasi" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Informasi</p><h1>Pengumuman</h1><p>Pengumuman resmi prajuru untuk krama. Isi di bawah adalah contoh.</p></div></div>
+  <div class="wrap pbody"><div class="rows" id="list-pengumuman"></div></div>
+</div>
+<div class="page" data-page="banjar" data-grp="profil" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Tentang Desa</p><h1>Banjar Adat</h1><p>Empat banjar adat di wewidangan Desa Adat Kelusa.</p></div></div>
+  <div class="wrap pbody" style="display:grid;gap:24px">
+    <div class="banjar">
+      <div><b>Banjar Ayah</b><span>Kelian: <span class="isi">nama</span></span><span>Jumlah KK: <span class="isi">angka</span></span></div>
+      <div><b>Banjar Triwangsa</b><span>Kelian: <span class="isi">nama</span></span><span>Jumlah KK: <span class="isi">angka</span></span></div>
+      <div><b>Banjar Roban</b><span>Kelian: <span class="isi">nama</span></span><span>Jumlah KK: <span class="isi">angka</span></span></div>
+      <div><b>Banjar Peliatan</b><span>Kelian: <span class="isi">nama</span></span><span>Jumlah KK: <span class="isi">angka</span></span></div>
+    </div>
+    <p class="lead">Krama tamiu dan tamiu yang tinggal di wewidangan desa adat wajib melapor kepada kelian banjar setempat. Lihat persyaratannya di halaman <a href="#lembaga-banjar-adat">Banjar Adat (Lembaga)</a>.</p>
+  </div>
+</div>
+<div class="page" data-page="pura" data-grp="keagamaan" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Keagamaan</p><h1>Pura</h1><p>Kahyangan yang diempon krama Desa Adat Kelusa.</p></div></div>
+  <div class="wrap pbody" style="display:grid;gap:28px">
+    <div class="pura">
+      <div class="kiri">
+        <p class="eyebrow" style="color:var(--api)">Dang Kahyangan</p>
+        <h3>Pura Hyang Api</h3>
+        <p>Di pura ini umat memuja Ida Sang Hyang Widhi dalam manifestasi Dewa Agni. Pemedek memohon kerahayuan: kesehatan (<i>kewarasan</i>), kelancaran hidup, serta keselamatan hewan ternak (<i>wewalungan</i>). Pura ini erat kaitannya dengan rerahinan Tumpek Kandang dan disungsung umat dari berbagai daerah di Bali.</p>
+        <p>Piodalan jatuh setiap 210 hari bertepatan dengan rangkaian Kuningan, saat tradisi khas <b>Aci Keburan</b> digelar di jaba pura.</p>
+        <div class="chips"><span class="chip">Dewa Agni</span><span class="chip">Tumpek Kandang</span><span class="chip">Aci Keburan</span><span class="chip">Tri Mandala</span></div>
+      </div>
+      <div class="kanan">
+        <p class="eyebrow" style="margin-bottom:8px">Tata ruang · Tri Mandala</p>
+        <div class="mandala">
+          <div><b>Utama Mandala</b><span>Jeroan, area tersuci tempat pelinggih utama.</span></div>
+          <div><b>Madya Mandala</b><span>Jaba tengah, tempat persiapan upacara dan kesenian pengiring.</span></div>
+          <div><b>Nista Mandala</b><span>Jaba sisi, halaman luar tempat umat berkumpul.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid3">
+      <div class="post" style="cursor:default"><span class="tagk">Kahyangan Tiga</span><h3>Pura Puseh</h3><p>Pemujaan Dewa Wisnu sebagai pemelihara. <span class="isi">lokasi &amp; piodalan</span></p></div>
+      <div class="post" style="cursor:default"><span class="tagk">Kahyangan Tiga</span><h3>Pura Desa / Bale Agung</h3><p>Pemujaan Dewa Brahma, pusat paruman desa. <span class="isi">lokasi &amp; piodalan</span></p></div>
+      <div class="post" style="cursor:default"><span class="tagk">Kahyangan Tiga</span><h3>Pura Dalem</h3><p>Pemujaan Dewa Siwa sebagai pelebur. <span class="isi">lokasi &amp; piodalan</span></p></div>
+    </div>
+  </div>
+</div>
+<div class="page" data-page="kalender" data-grp="keagamaan" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Keagamaan</p><h1>Kalender Rerahinan</h1><p>Hari suci berdasarkan siklus pawukon 210 hari.</p></div></div>
+  <div class="wrap pbody"><div class="kal" data-kal="9"></div><p class="note">Tanggal dihitung otomatis dari siklus pawukon. Cocokkan dengan kalender Bali dan pengumuman prajuru sebelum menyusun jadwal upacara.</p></div>
+</div>
+
+<!-- ================= TENTANG: DEMOGRAFI & PRESTASI ================= -->
+<div class="page" data-page="demografi" data-grp="profil" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Tentang Desa</p><h1>Demografi</h1><p>Gambaran wilayah dan penduduk. Data desa adat diisi dari pendataan banjar terbaru.</p></div></div>
+  <div class="wrap pbody" style="display:grid;gap:40px">
+    <div>
+      <p class="eyebrow" style="margin-bottom:12px">Desa Kelusa (dinas) · cakupan tiga desa adat</p>
+      <dl class="stat">
+        <div><dt>Luas wilayah</dt><dd>6,50 <small>km²</small></dd></div>
+        <div><dt>Penduduk (2014)</dt><dd>4.345 <small>jiwa</small></dd></div>
+        <div><dt>Kode pos</dt><dd>80572</dd></div>
+        <div><dt>Desa adat</dt><dd>3 <small>Kelusa · Keliki Kawan · Yeh Tengah</small></dd></div>
+      </dl>
+    </div>
+    <div>
+      <p class="eyebrow" style="margin-bottom:12px">Desa Adat Kelusa · per banjar adat</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Banjar adat</th><th>KK</th><th>Krama desa</th><th>Krama tamiu</th><th>Tamiu</th></tr></thead>
+        <tbody>
+          <tr><td>Banjar Ayah</td><td><span class="isi">–</span></td><td><span class="isi">–</span></td><td><span class="isi">–</span></td><td><span class="isi">–</span></td></tr>
+          <tr><td>Banjar Triwangsa</td><td><span class="isi">–</span></td><td><span class="isi">–</span></td><td><span class="isi">–</span></td><td><span class="isi">–</span></td></tr>
+          <tr><td>Banjar Roban</td><td><span class="isi">–</span></td><td><span class="isi">–</span></td><td><span class="isi">–</span></td><td><span class="isi">–</span></td></tr>
+          <tr><td>Banjar Peliatan</td><td><span class="isi">–</span></td><td><span class="isi">–</span></td><td><span class="isi">–</span></td><td><span class="isi">–</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Sumber data desa dinas: profil Desa Kelusa (2014). Data per banjar menunggu hasil pendataan prajuru.</p>
+    </div>
+  </div>
+</div>
+<div class="page" data-page="prestasi" data-grp="profil" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Tentang Desa</p><h1>Prestasi</h1><p>Penghargaan dan capaian desa adat, sekaa, dan krama.</p></div></div>
+  <div class="wrap pbody">
+    <div class="rows">
+      <div class="row"><time><span class="isi">tahun</span></time><div><b>Nama penghargaan</b><span class="s">Lembaga pemberi · tingkat kabupaten/provinsi/nasional</span></div><span class="kode">Contoh</span></div>
+      <div class="row"><time><span class="isi">tahun</span></time><div><b>Lomba desa adat / kebersihan</b><span class="s">Kategori dan peringkat</span></div><span class="kode">Contoh</span></div>
+      <div class="row"><time><span class="isi">tahun</span></time><div><b>Prestasi sekaa gong / yowana</b><span class="s">Ajang dan juara</span></div><span class="kode">Contoh</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PARIWISATA ================= -->
+<div class="page" data-page="objek-wisata" data-grp="pariwisata" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Pariwisata</p><h1>Objek Wisata</h1><p>Wisata spiritual, alam, dan budaya di wewidangan Kelusa. Pengunjung mohon mengikuti <a href="#berkunjung" style="color:var(--gold)">panduan berkunjung</a>.</p></div></div>
+  <div class="wrap pbody"><div class="grid3" id="list-wisata"></div></div>
+</div>
+
+<!-- ================= KEUANGAN & LAPORAN ================= -->
+<div class="page" data-page="laporan-keuangan" data-grp="laporan" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Keuangan &amp; Laporan</p><h1>Laporan Keuangan</h1><p>Ringkasan pendapatan dan belanja desa adat, disampaikan terbuka kepada krama.</p></div></div>
+  <div class="wrap pbody" style="display:grid;gap:16px">
+    <div class="tbl"><table>
+      <thead><tr><th>Uraian</th><th class="n">Tahun <span class="isi">20xx</span></th><th class="n">Keterangan</th></tr></thead>
+      <tbody>
+        <tr><td colspan="3" class="grp">Pendapatan</td></tr>
+        <tr><td>Dana Desa Adat (Pemprov Bali)</td><td class="n"><span class="isi">Rp</span></td><td class="n">Bantuan keuangan khusus</td></tr>
+        <tr><td>Kontribusi LPD</td><td class="n"><span class="isi">Rp</span></td><td class="n">Bagian laba</td></tr>
+        <tr><td>Peturunan &amp; iuran krama</td><td class="n"><span class="isi">Rp</span></td><td class="n">Sesuai pararem</td></tr>
+        <tr><td>Dana punia</td><td class="n"><span class="isi">Rp</span></td><td class="n">Termasuk piodalan</td></tr>
+        <tr><td colspan="3" class="grp">Belanja</td></tr>
+        <tr><td>Parahyangan (upacara &amp; pura)</td><td class="n"><span class="isi">Rp</span></td><td class="n"></td></tr>
+        <tr><td>Pawongan (lembaga &amp; sekaa)</td><td class="n"><span class="isi">Rp</span></td><td class="n"></td></tr>
+        <tr><td>Palemahan (lingkungan)</td><td class="n"><span class="isi">Rp</span></td><td class="n"></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note" style="margin:0">Tabel ini adalah format laporan. Angka diisi patengen setelah disahkan paruman.</p>
+  </div>
+</div>
+<div class="page" data-page="laporan-perencanaan" data-grp="laporan" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Keuangan &amp; Laporan</p><h1>Laporan Perencanaan</h1><p>Rencana kerja desa adat yang disepakati dalam paruman.</p></div></div>
+  <div class="wrap pbody">
+    <div class="rows">
+      <div class="row"><time>Parahyangan</time><div><b>Rencana upacara dan pemeliharaan pura</b><span class="s">Termasuk persiapan piodalan Pura Hyang Api</span></div><span class="kode"><span class="isi">tahun</span></span></div>
+      <div class="row"><time>Pawongan</time><div><b>Pembinaan sekaa, yowana, dan pecalang</b><span class="s">Pelatihan dan kegiatan rutin</span></div><span class="kode"><span class="isi">tahun</span></span></div>
+      <div class="row"><time>Palemahan</time><div><b>Program kebersihan dan pelestarian lingkungan</b><span class="s">Pemilahan sampah dan perawatan sumber air</span></div><span class="kode"><span class="isi">tahun</span></span></div>
+    </div>
+    <p class="note">Format contoh. Unggah dokumen rencana kerja resmi bila sudah tersedia.</p>
+  </div>
+</div>
+
+<!-- ================= PERPUSTAKAAN & FAQ ================= -->
+<div class="page" data-page="perpustakaan" data-grp="informasi" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Informasi</p><h1>Perpustakaan Digital</h1><p>Kajian ilmiah dan dokumen tentang Desa Adat Kelusa yang bisa dibaca daring.</p></div></div>
+  <div class="wrap pbody">
+    <div class="rows">
+      <a class="row" href="https://jurnal.ugm.ac.id/lembaran-sejarah/article/view/59521" target="_blank" rel="noopener"><time>2019</time><div><b>Tinjauan Makna Keberadaan Pura Hyang Api di Desa Kelusa, Bali</b><span class="s">Jurnal Lembaran Sejarah, Universitas Gadjah Mada</span></div><span class="kode">Jurnal ↗</span></a>
+      <a class="row" href="https://ojs.mahadewa.ac.id/index.php/widyadari/article/view/505" target="_blank" rel="noopener"><time>2019</time><div><b>Sejarah Pura Hyang Api di Desa Kelusa, Kecamatan Payangan</b><span class="s">Jurnal Widyadari, IKIP PGRI Bali</span></div><span class="kode">Jurnal ↗</span></a>
+      <a class="row" href="https://jayapanguspress.penerbit.org/index.php/JPAH/article/view/1528" target="_blank" rel="noopener"><time>Jurnal</time><div><b>Pelaksanaan Tradisi Aci Keburan di Pura Hyang Api Desa Pakraman Kelusa</b><span class="s">Jayapangus Press</span></div><span class="kode">Jurnal ↗</span></a>
+      <a class="row" href="https://openjournal.unpam.ac.id/index.php/DKP/article/view/38803" target="_blank" rel="noopener"><time>Jurnal</time><div><b>Pengembangan Ekowisata Berkelanjutan Desa Kelusa</b><span class="s">Pendekatan Triple Bottom Line dan Tri Hita Karana</span></div><span class="kode">Jurnal ↗</span></a>
+      <a class="row" href="#produk-hukum"><time>1981</time><div><b>Awig-awig Murdha Gitta</b><span class="s">Salinan tersedia di sekretariat desa adat</span></div><span class="kode">Dokumen</span></a>
+    </div>
+  </div>
+</div>
+<div class="page" data-page="faq" data-grp="layanan" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Layanan</p><h1>Tanya Jawab</h1><p>Pertanyaan yang sering diajukan krama dan tamu tentang layanan desa adat.</p></div></div>
+  <div class="wrap pbody"><div class="faq" data-faq="99"></div></div>
+</div>
+
+<!-- ================= PRODUK HUKUM ================= -->
+<div class="page" data-page="produk-hukum" data-grp="informasi" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Produk Hukum</p><h1>Produk Hukum</h1><p>Awig-awig dan pararem Desa Adat Kelusa. Salinan lengkap dapat dibaca di sekretariat desa adat.</p></div></div>
+  <div class="wrap pbody"><div class="rows" id="list-hukum"></div><p class="note">Hanya Awig-awig Murdha Gitta (1981) yang sudah terverifikasi. Baris lain adalah format contoh.</p></div>
+</div>
+
+<!-- ================= GALERI ================= -->
+<div class="page" data-page="foto" data-grp="informasi" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Informasi</p><h1>Foto</h1><p>Dokumentasi kegiatan dan wewidangan desa. Kotak di bawah menunggu foto asli.</p></div></div>
+  <div class="wrap pbody"><div class="galeri">
+    <figure><div class="ph g2"></div><figcaption>Piodalan Pura Hyang Api</figcaption></figure>
+    <figure><div class="ph g1"></div><figcaption>Sawah di wewidangan desa</figcaption></figure>
+    <figure><div class="ph g4"></div><figcaption>Penjor Galungan</figcaption></figure>
+    <figure><div class="ph g3"></div><figcaption>Gotong royong banjar</figcaption></figure>
+    <figure><div class="ph g1"></div><figcaption>Subak</figcaption></figure>
+    <figure><div class="ph g2"></div><figcaption>Tumpek Kandang</figcaption></figure>
+    <figure><div class="ph g3"></div><figcaption>Paruman desa</figcaption></figure>
+    <figure><div class="ph g4"></div><figcaption>Sekaa gong</figcaption></figure>
+  </div></div>
+</div>
+<div class="page" data-page="video" data-grp="informasi" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Informasi</p><h1>Video</h1><p>Video dokumentasi desa adat ditautkan ke kanal YouTube resmi.</p></div></div>
+  <div class="wrap pbody grid2">
+    <figure style="margin:0;display:grid;gap:8px"><div class="video">Tautan video piodalan</div><figcaption class="note" style="margin:0">Piodalan Pura Hyang Api <span class="isi">link YouTube</span></figcaption></figure>
+    <figure style="margin:0;display:grid;gap:8px"><div class="video">Tautan video profil desa</div><figcaption class="note" style="margin:0">Profil Desa Adat Kelusa <span class="isi">link YouTube</span></figcaption></figure>
+  </div>
+</div>
+
+<!-- ================= BERKUNJUNG ================= -->
+<div class="page" data-page="berkunjung" data-grp="pariwisata" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Pariwisata</p><h1>Berkunjung ke Kelusa</h1><p>Tamu dan pemedek disambut hangat. Mohon ikuti tata krama berikut selama di wewidangan desa adat.</p></div></div>
+  <div class="wrap pbody grid2">
+    <ol class="etika">
+      <li><div><b>Berpakaian adat ke pura</b><span>Kamen, selendang, dan pakaian sopan.</span></div></li>
+      <li><div><b>Hormati kesucian pura</b><span>Perempuan yang sedang haid dan orang dalam masa cuntaka tidak memasuki area pura.</span></div></li>
+      <li><div><b>Jangan memotong jalan prosesi</b><span>Saat ada upacara, menepilah sampai iring-iringan lewat.</span></div></li>
+      <li><div><b>Minta izin sebelum memotret</b><span>Terutama saat persembahyangan dan di Utama Mandala.</span></div></li>
+      <li><div><b>Bawa pulang sampahmu</b><span>Bantu kami menjaga desa tetap bersih dan asri.</span></div></li>
+    </ol>
+    <div style="display:grid;gap:14px;align-content:start">
+      <p class="eyebrow">Akses</p>
+      <p>Kelusa terletak di jalur Jalan Raya Kelusa, Payangan, di utara Ubud. Pura Hyang Api berada di tepi jalan raya sehingga mudah dicapai.</p>
+      <div class="jarak">
+        <div><span>Pusat Ubud</span><span>± 7 km</span></div>
+        <div><span>Tegallalang</span><span>± 6 km</span></div>
+        <div><span>Bandara I Gusti Ngurah Rai</span><span class="isi">perkiraan</span></div>
+      </div>
+      <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Pura+Hyang+Api+Kelusa+Payangan" target="_blank" rel="noopener" style="justify-self:start">Buka di Google Maps ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= KONTAK ================= -->
+<div class="page" data-page="kontak" data-grp="layanan" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Layanan</p><h1>Kontak Kami</h1><p>Urusan adat ke sekretariat desa adat. Administrasi kependudukan ke Kantor Desa (dinas) Kelusa.</p></div></div>
+  <div class="wrap pbody grid2">
+    <div><h2 style="font-size:26px;margin-bottom:14px">Sekretariat Desa Adat</h2>
+      <dl class="kontakl">
+        <div><dt>Alamat</dt><dd><span class="isi">alamat sekretariat</span></dd></div>
+        <div><dt>Telepon / WA</dt><dd><span class="isi">nomor</span></dd></div>
+        <div><dt>Email</dt><dd><span class="isi">email</span></dd></div>
+        <div><dt>Jam layanan</dt><dd><span class="isi">hari &amp; jam</span></dd></div>
+      </dl></div>
+    <div><h2 style="font-size:26px;margin-bottom:14px">Kantor Desa Kelusa</h2>
+      <dl class="kontakl">
+        <div><dt>Alamat</dt><dd>Jln. Raya Kelusa, Payangan, Gianyar 80572</dd></div>
+        <div><dt>Telepon</dt><dd><span id="tel">0361 973524</span><button class="copy" type="button" data-copy="tel">Salin</button></dd></div>
+        <div><dt>Email</dt><dd><span id="mail">kantordesakelusa@gmail.com</span><button class="copy" type="button" data-copy="mail">Salin</button></dd></div>
+      </dl></div>
+  </div>
+</div>
+
+<!-- ================= PENGADUAN ================= -->
+<div class="page" data-page="pengaduan" data-grp="layanan" hidden>
+  <div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / Layanan</p><h1>Pengaduan Krama</h1><p>Sampaikan keluhan atau masukan secara tertib. Isi formulir, lalu salin teksnya dan kirim ke sekretariat lewat WhatsApp atau email.</p></div></div>
+  <div class="wrap pbody grid2">
+    <form class="form" id="f-aduan" novalidate>
+      <label for="a-nama">Nama<input id="a-nama" required autocomplete="name"></label>
+      <label for="a-banjar">Banjar<select id="a-banjar"><option>Banjar Ayah</option><option>Banjar Triwangsa</option><option>Banjar Roban</option><option>Banjar Peliatan</option><option>Krama tamiu / tamu</option></select></label>
+      <label for="a-jenis">Jenis<select id="a-jenis"><option>Pengaduan</option><option>Masukan / saran</option><option>Permohonan informasi</option></select></label>
+      <label for="a-isi">Isi pengaduan<textarea id="a-isi" required></textarea></label>
+      <p id="a-err" style="color:var(--api);font-size:14.5px" hidden>Isi nama dan isi pengaduan terlebih dahulu.</p>
+      <button class="btn primary" type="submit" style="justify-self:start">Susun teks pengaduan</button>
+    </form>
+    <div style="display:grid;gap:14px;align-content:start">
+      <p class="eyebrow">Teks siap kirim</p>
+      <div class="hasil" id="a-hasil">Teks pengaduan akan muncul di sini setelah formulir diisi.</div>
+      <button class="btn line" type="button" id="a-copy" style="justify-self:start">Salin teks</button>
+      <p class="note" style="margin:0">Kirim ke WhatsApp sekretariat <span class="isi">nomor</span> atau email <span class="isi">email desa adat</span>. Pengaduan dijawab paling lambat <span class="isi">… hari kerja</span>.</p>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div style="display:grid;gap:12px;align-content:start">
+      <a class="brand" href="#beranda"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 38V14l6-4v-4h4l4-4 4 4h4v4l6 4v24" fill="none" stroke="#D7AE57" stroke-width="2"/><path d="M20 33c-4 0-6-3-6-6 0-4 4-6 4-10 2 2 3 4 3 6 1-1 2-2 2-4 3 3 3 6 3 8 0 3-2 6-6 6z" fill="#EE8155"/></svg><span><b>Desa Adat Kelusa</b></span></a>
+      <p>Website Resmi Desa Adat Kelusa, Kecamatan Payangan, Kabupaten Gianyar, Bali.</p>
+      <div class="sosmed"><span>Facebook</span><span>Instagram</span><span>TikTok</span><span>YouTube</span></div><p style="font-size:13px">Tautkan akun resmi desa adat <span class="isi" style="color:var(--gold);border-color:var(--gold)">isi akun</span></p>
+    </div>
+    <div><h3>Menu</h3><ul>
+      <li><a href="#sejarah">Profil Desa</a></li><li><a href="#prajuru">Struktur Prajuru</a></li><li><a href="#demografi">Demografi</a></li><li><a href="#pura">Pura</a></li><li><a href="#objek-wisata">Objek Wisata</a></li><li><a href="#produk-hukum">Regulasi</a></li><li><a href="#laporan-keuangan">Laporan</a></li><li><a href="#perpustakaan">Perpustakaan</a></li><li><a href="#pengaduan">Pengaduan</a></li>
+    </ul></div>
+    <div><h3>Kontak Kami</h3><ul>
+      <li>Kantor Desa: 0361 973524</li><li>kantordesakelusa@gmail.com</li><li>Jln. Raya Kelusa, Payangan, Gianyar 80572</li>
+    </ul></div>
+  </div>
+  <div class="bawah"><div class="wrap"><span>© <span id="yr">2026</span> Desa Adat Kelusa</span><span>Om Shanti Shanti Shanti Om</span></div></div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- DATA ---------- */
+  var LEMBAGA = [
+    {id:"lpd",n:"LPD",f:"Lembaga Perkreditan Desa",d:"Lembaga keuangan milik desa adat yang melayani tabungan dan kredit krama. Sebagian keuntungannya menopang pembangunan dan upacara desa.",t:["Tabungan dan deposito krama","Kredit usaha dan kebutuhan krama","Kontribusi untuk pembangunan desa adat"]},
+    {id:"bupda",n:"BUPDA",f:"Baga Utsaha Padruwen Desa Adat",d:"Badan usaha milik desa adat sesuai Perda Bali No. 4 Tahun 2019, untuk mengelola potensi ekonomi wewidangan desa.",t:["Mengelola unit usaha desa adat","Mengembangkan potensi wisata dan pertanian","Menyerap tenaga kerja krama"]},
+    {id:"pecalang",n:"Pecalang",f:"Keamanan adat",d:"Menjaga keamanan dan ketertiban di wewidangan desa adat, terutama saat upacara di Pura Hyang Api dan Kahyangan Tiga.",t:["Pengamanan upacara dan piodalan","Pengaturan lalu lintas saat prosesi","Koordinasi dengan aparat desa dinas"]},
+    {id:"yowana",n:"Yowana Desa Adat",f:"Sekaa Teruna",d:"Wadah generasi muda desa adat untuk kegiatan keagamaan, seni, olahraga, dan sosial.",t:["Ngayah saat upacara","Pembuatan ogoh-ogoh dan penjor","Kegiatan sosial dan lingkungan"]},
+    {id:"sekaa-gong",n:"Sekaa Gong",f:"Seni tabuh",d:"Pengiring upacara di kahyangan desa dan pelestari seni tabuh Bali.",t:["Mengiringi piodalan","Latihan rutin generasi muda","Pentas pada acara desa"]},
+    {id:"sekaa-santi",n:"Sekaa Santi",f:"Kidung & dharma gita",d:"Melantunkan kidung dan kekawin yang mengiringi rangkaian upacara.",t:["Kidung saat piodalan","Pembinaan dharma gita","Pengiring upacara pitra dan manusa yadnya"]},
+    {id:"paiketan-pemangku",n:"Paiketan Pemangku",f:"Pinandita desa",d:"Wadah para pemangku pura di wewidangan Desa Adat Kelusa.",t:["Memimpin persembahyangan","Menjaga tata upacara di pura","Pembinaan pengetahuan agama krama"]},
+    {id:"paiketan-serati",n:"Paiketan Serati",f:"Pembuat banten",d:"Wadah para serati yang menyiapkan upakara dan banten untuk upacara desa.",t:["Menyiapkan banten piodalan","Pelatihan membuat banten","Pendampingan upakara krama"]},
+    {id:"paiketan-krama-istri",n:"Paiketan Krama Istri",f:"Pasikian Istri",d:"Wadah krama istri dalam kegiatan upakara, kesehatan keluarga, dan pemberdayaan ekonomi.",t:["Ngayah upakara","Kegiatan PKK dan posyandu","Usaha ekonomi keluarga"]},
+    {id:"banjar-adat",n:"Banjar Adat",f:"Ayah · Triwangsa · Roban · Peliatan",d:"Satuan terkecil desa adat tempat krama berkumpul, bermusyawarah, dan ngayah. Banjar juga menjadi tempat pendataan krama tamiu dan tamiu.",t:["Paruman banjar","Pendataan krama tamiu: KTP, KK, surat keterangan pemilik tempat tinggal, pas foto, kontak darurat","Gotong royong kebersihan"]},
+    {id:"sabha-desa",n:"Sabha Desa",f:"Lembaga pertimbangan desa adat",d:"Lembaga yang memberi pertimbangan dan masukan kepada prajuru dalam penyelenggaraan desa adat, sesuai Perda Provinsi Bali No. 4 Tahun 2019. Anggotanya terdiri dari tokoh dan wakil krama yang dipilih melalui paruman.",t:["Memberi pertimbangan atas rencana kerja dan anggaran desa adat","Ikut membahas rancangan awig-awig dan pararem","Mengawasi pelaksanaan keputusan paruman","Menampung aspirasi krama dan menyampaikannya kepada prajuru"]},
+    {id:"kertha-desa",n:"Kertha Desa",f:"Penyelesaian wicara adat",d:"Lembaga yang menyelesaikan perkara adat (wicara) secara musyawarah berdasarkan awig-awig dan pararem.",t:["Menerima pengaduan krama","Mediasi wicara adat","Memberi pertimbangan kepada prajuru"]}
+  ];
+  var BERITA = [
+    {k:"Paruman",j:"Paruman Desa Adat menjelang Galungan",w:"Contoh · Desember 2026",r:"Pembahasan persiapan ngayah, pembagian tugas antarbanjar, dan rencana penjor desa."},
+    {k:"Parahyangan",j:"Persiapan Piodalan Pura Hyang Api",w:"Contoh · Januari 2027",r:"Jadwal ngayah krama, susunan panitia, dan tata tertib bagi pemedek."},
+    {k:"Palemahan",j:"Gotong royong kebersihan wewidangan",w:"Contoh · Tiap bulan",r:"Kerja bakti di jalan desa, area pura, dan saluran air, dikoordinasi kelian banjar."},
+    {k:"Yowana",j:"Yowana desa ikuti pelatihan pecalang",w:"Contoh · November 2026",r:"Generasi muda dibekali pengetahuan pengamanan upacara besar."},
+    {k:"LPD",j:"Rapat tahunan LPD Desa Adat",w:"Contoh · Desember 2026",r:"Laporan kinerja dan rencana kerja tahun berikutnya disampaikan kepada krama."}
+  ];
+  var PENGUMUMAN = [
+    {w:"Contoh",j:"Jadwal ngayah persiapan Galungan",s:"Berlaku untuk keempat banjar adat"},
+    {w:"Contoh",j:"Paruman desa adat",s:"Wajib dihadiri kelian banjar dan prajuru"},
+    {w:"Contoh",j:"Pendataan ulang krama tamiu",s:"Melalui kelian banjar masing-masing"},
+    {w:"Contoh",j:"Penutupan jalan saat piodalan",s:"Jalan Raya Kelusa di depan Pura Hyang Api"},
+    {w:"Contoh",j:"Pembayaran iuran banjar",s:"Melalui patengen banjar"}
+  ];
+  var HUKUM = [
+    {w:"1981",j:"Awig-awig Murdha Gitta",s:"Awig-awig Desa Pakraman Kelusa",k:"Awig-awig"},
+    {w:"Tahun ?",j:"Pararem Krama Tamiu dan Tamiu",s:"Pendataan dan kewajiban pendatang",k:"Pararem"},
+    {w:"Tahun ?",j:"Pararem Pelestarian Lingkungan",s:"Sampah, sungai, dan alih fungsi lahan",k:"Pararem"},
+    {w:"Tahun ?",j:"Pararem Pelaksanaan Upacara",s:"Tata cara piodalan dan ngayah",k:"Pararem"},
+    {w:"Tahun ?",j:"Pararem Pecalang",s:"Tugas dan wewenang keamanan adat",k:"Pararem"},
+    {w:"Tahun ?",j:"Pararem LPD",s:"Tata kelola Lembaga Perkreditan Desa",k:"Pararem"}
+  ];
+  var ARTIKEL = [
+    {id:"pura-hyang-api",k:"Parahyangan",j:"Pura Hyang Api, stana Dewa Agni di Kelusa",r:"Salah satu pura kuno di Bali yang diperkirakan ada sejak abad ke-8 Masehi.",
+     b:["Pura Hyang Api di Desa Kelusa, Kecamatan Payangan, adalah pura kuno yang diperkirakan telah ada sejak abad ke-8 Masehi, pada masa Maharsi Markandya mengembangkan ajaran Siwa di Bali.","Di pura ini umat memuja Ida Sang Hyang Widhi dalam wujud Dewa Agni. Pemedek datang untuk memohon kewarasan (kesehatan), kelancaran hidup, dan keselamatan hewan ternak. Pura ini disungsung tidak hanya oleh krama Kelusa, tetapi juga umat dari berbagai daerah di Bali.","Struktur pura mengikuti konsep Tri Mandala: Utama Mandala (jeroan), Madya Mandala (jaba tengah), dan Nista Mandala (jaba sisi), yang melambangkan tiga alam: bhur, bhuwah, dan swah."]},
+    {id:"aci-keburan",k:"Tradisi",j:"Aci Keburan saat piodalan Pura Hyang Api",r:"Tradisi khas yang digelar di jaba pura setiap 210 hari.",
+     b:["Aci Keburan adalah tradisi khas yang menyertai piodalan Pura Hyang Api. Piodalan berlangsung setiap 210 hari menurut kalender pawukon, bertepatan dengan rangkaian Hari Raya Kuningan.","Tradisi ini dilaksanakan di jaba atau halaman luar pura sebagai bagian dari rangkaian upacara (tabuh rah), dan menjadi persembahan khas yang membedakan Pura Hyang Api dari pura lainnya.","Kajian tentang tradisi ini merujuk pada awig-awig Desa Pakraman Kelusa, Murdha Gitta, yang disusun tahun 1981."]},
+    {id:"tumpek-kandang",k:"Rerahinan",j:"Tumpek Kandang dan pemujaan di Pura Hyang Api",r:"Hari untuk hewan ternak yang erat kaitannya dengan pura di Kelusa.",
+     b:["Tumpek Kandang jatuh pada Saniscara Kliwon wuku Uye, setiap 210 hari. Pada hari ini umat Hindu Bali menghaturkan persembahan bagi keselamatan hewan peliharaan dan ternak.","Bagi krama Kelusa, Tumpek Kandang dikaitkan dengan pemujaan Dewa Agni di Pura Hyang Api, tempat umat memohon keselamatan wewalungan (hewan ternak).","Tanggal Tumpek Kandang berikutnya dapat dilihat di halaman Kalender Rerahinan."]}
+  ];
+
+  /* ---------- RENDER ---------- */
+  function $(id){return document.getElementById(id)}
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+  function postHTML(p,href){return '<a class="post" href="'+href+'"><span class="tagk">'+esc(p.k)+'</span><h3>'+esc(p.j)+'</h3>'+(p.w?'<time>'+esc(p.w)+'</time>':'')+'<p>'+esc(p.r)+'</p></a>'}
+  function rowHTML(r,href){return '<a class="row" href="'+href+'"><time>'+esc(r.w)+'</time><div><b>'+esc(r.j)+'</b><span class="s">'+esc(r.s)+'</span></div><span class="kode">'+esc(r.k||"")+'</span></a>'}
+
+  $("home-berita").innerHTML = BERITA.slice(0,3).map(function(b){return postHTML(b,"#berita")}).join("");
+  $("list-berita").innerHTML = BERITA.map(function(b){return postHTML(b,"#berita")}).join("");
+  $("home-pengumuman").innerHTML = PENGUMUMAN.slice(0,5).map(function(r){return rowHTML(r,"#pengumuman")}).join("");
+  $("list-pengumuman").innerHTML = PENGUMUMAN.map(function(r){return rowHTML(r,"#pengumuman")}).join("");
+  $("home-hukum").innerHTML = HUKUM.slice(0,5).map(function(r){return rowHTML(r,"#produk-hukum")}).join("");
+  $("list-hukum").innerHTML = HUKUM.map(function(r){return rowHTML(r,"#produk-hukum")}).join("");
+  $("list-artikel").innerHTML = ARTIKEL.map(function(a){return postHTML(a,"#artikel-"+a.id)}).join("");
+
+  var ap = "";
+  ARTIKEL.forEach(function(a){
+    ap += '<div class="page" data-page="artikel-'+a.id+'" data-grp="informasi" hidden><div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / <a href="#artikel">Artikel</a></p><h1>'+esc(a.j)+'</h1><p>'+esc(a.r)+'</p></div></div><div class="wrap pbody"><div class="prose">'+a.b.map(function(p){return '<p>'+esc(p)+'</p>'}).join("")+'<a class="more" href="#artikel">← Kembali ke Artikel</a></div></div></div>';
+  });
+  $("artikel-pages").innerHTML = ap;
+
+  var sub = '<li><a href="#lembaga">Semua Lembaga</a></li>', grid = "", lp = "";
+  LEMBAGA.forEach(function(l){
+    sub += '<li><a href="#lembaga-'+l.id+'">'+esc(l.n)+'</a></li>';
+    grid += '<a class="lcard" href="#lembaga-'+l.id+'"><b>'+esc(l.n)+'</b><span>'+esc(l.f)+'</span></a>';
+    lp += '<div class="page" data-page="lembaga-'+l.id+'" data-grp="lembaga" hidden><div class="phead zig"><div class="wrap"><p class="crumb"><a href="#beranda">Beranda</a> / <a href="#lembaga">Lembaga Adat</a></p><h1>'+esc(l.n)+'</h1><p>'+esc(l.f)+'</p></div></div><div class="wrap pbody ldetail"><div class="prose"><p>'+esc(l.d)+'</p><h2 style="font-size:26px">Tugas &amp; kegiatan</h2><ul class="tugas">'+l.t.map(function(t){return '<li>'+esc(t)+'</li>'}).join("")+'</ul></div><dl class="fakta-l"><div><dt>Ketua</dt><dd><span class="isi">nama</span></dd></div><div><dt>Sekretariat</dt><dd><span class="isi">lokasi</span></dd></div><div><dt>Kontak</dt><dd><span class="isi">nomor</span></dd></div><div><dt>Dasar</dt><dd>Awig-awig &amp; pararem</dd></div></dl></div></div>';
+  });
+  $("sub-lembaga").innerHTML = sub; $("lembaga-grid").innerHTML = grid; $("lembaga-pages").innerHTML = lp;
+
+
+  var WISATA = [
+    {k:"Wisata spiritual",j:"Pura Hyang Api",r:"Pura kuno pemujaan Dewa Agni di tepi Jalan Raya Kelusa. Masuk dengan pakaian adat dan izin pemangku.",c:"g2"},
+    {k:"Air suci",j:"Pancoran Solas & Pancoran Susu",r:"Sumber air di kawasan Pura Mengening, wilayah Desa Kelusa, yang dikaji sebagai potensi ekowisata.",c:"g3"},
+    {k:"Alam",j:"Sawah & jalan desa",r:"Bentang sawah dan subak khas Payangan, cocok untuk jalan kaki atau bersepeda pagi hari.",c:"g1"},
+    {k:"Budaya",j:"Upacara & kesenian",r:"Saksikan rangkaian piodalan dan kesenian pengiring dengan tetap menghormati kesucian upacara. Jadwal di Kalender.",c:"g4"}
+  ];
+  var FAQ = [
+    {q:"Bagaimana cara melapor sebagai krama tamiu atau tamiu?",a:"Laporkan diri kepada kelian banjar adat tempat Anda tinggal dengan membawa fotokopi KTP dan Kartu Keluarga, surat keterangan dari pemilik tempat tinggal, pas foto, dan kontak darurat. Besaran iuran mengikuti pararem desa adat."},
+    {q:"Bagaimana cara menjadi anggota banjar (mipil)?",a:"Ajukan permohonan melalui kelian banjar. Permohonan dibahas dalam paruman banjar sesuai awig-awig. Hubungi kelian banjar untuk persyaratan lengkap."},
+    {q:"Bisakah saya meminta surat keterangan dari desa adat?",a:"Bisa. Datang ke sekretariat desa adat dengan surat pengantar dari kelian banjar dan KTP. Untuk surat kependudukan (domisili, pindah, usaha), urus di Kantor Desa (dinas) Kelusa."},
+    {q:"Apakah wisatawan boleh masuk ke Pura Hyang Api?",a:"Boleh untuk bersembahyang atau berkunjung dengan pakaian adat dan sikap sopan. Perempuan yang sedang haid dan orang dalam masa cuntaka tidak memasuki area pura. Saat upacara, ikuti arahan pecalang."},
+    {q:"Kapan piodalan Pura Hyang Api?",a:"Setiap 210 hari bertepatan dengan rangkaian Hari Raya Kuningan. Tanggal terdekat ada di halaman Kalender Rerahinan, dan jadwal resmi diumumkan prajuru."},
+    {q:"Ke mana saya menyampaikan keluhan atau masukan?",a:"Gunakan halaman Pengaduan untuk menyusun teks, lalu kirimkan ke sekretariat desa adat. Perkara adat diselesaikan melalui Kertha Desa secara musyawarah."}
+  ];
+  function wHTML(w){return '<a class="wcard" href="#objek-wisata"><div class="ph '+w.c+'"></div><span class="tagk">'+esc(w.k)+'</span><h3>'+esc(w.j)+'</h3><p>'+esc(w.r)+'</p></a>'}
+  $("home-wisata").innerHTML = WISATA.slice(0,3).map(wHTML).join("");
+  $("list-wisata").innerHTML = WISATA.map(wHTML).join("");
+  document.querySelectorAll("[data-faq]").forEach(function(box){
+    box.innerHTML = FAQ.slice(0,+box.dataset.faq).map(function(f,i){return '<details'+(i===0?' open':'')+'><summary>'+esc(f.q)+'</summary><p>'+esc(f.a)+'</p></details>'}).join("");
+  });
+  /* ---------- KALENDER PAWUKON (jangkar Galungan 17 Juni 2026) ---------- */
+  var ANCHOR = Date.UTC(2026,5,17), DAY = 864e5, CYCLE = 210;
+  var EV = [
+    {o:-74,n:"Saraswati",d:"Hari turunnya ilmu pengetahuan."},
+    {o:-70,n:"Pagerwesi",d:"Memohon keteguhan iman dan perlindungan."},
+    {o:-60,n:"Tumpek Landep",d:"Upacara untuk benda tajam dan logam."},
+    {o:-25,n:"Tumpek Wariga",d:"Persembahan bagi tumbuh-tumbuhan."},
+    {o:0,n:"Galungan",d:"Kemenangan dharma atas adharma."},
+    {o:10,n:"Kuningan",d:"Bertepatan dengan rangkaian Piodalan Pura Hyang Api.",api:1},
+    {o:45,n:"Tumpek Krulut",d:"Persembahan untuk gamelan dan kesenian."},
+    {o:80,n:"Tumpek Kandang",d:"Hari hewan ternak, erat dengan Pura Hyang Api.",api:1},
+    {o:115,n:"Tumpek Wayang",d:"Persembahan untuk wayang dan seni pertunjukan."}
+  ];
+  var HR=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"], BL=["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+  var now=new Date(), today=Date.UTC(now.getFullYear(),now.getMonth(),now.getDate());
+  var L = EV.map(function(e){var t=ANCHOR+e.o*DAY;var k=Math.ceil((today-t)/(CYCLE*DAY));if(k<0)k=0;t+=k*CYCLE*DAY;if(t<today)t+=CYCLE*DAY;return {t:t,e:e}}).sort(function(a,b){return a.t-b.t});
+  document.querySelectorAll("[data-kal]").forEach(function(box){
+    box.innerHTML = L.slice(0,+box.dataset.kal).map(function(x){
+      var d=new Date(x.t), df=Math.round((x.t-today)/DAY), rel=df===0?"Hari ini":df===1?"Besok":df+" hari lagi";
+      return '<div class="'+(x.e.api?'api':'')+'"><span class="tgl">'+d.getUTCDate()+' '+BL[d.getUTCMonth()]+' '+d.getUTCFullYear()+' · '+HR[d.getUTCDay()]+'</span><b>'+x.e.n+'</b><span>'+x.e.d+'</span><span class="hari">'+rel+'</span></div>';
+    }).join("");
+  });
+  $("yr").textContent = now.getFullYear();
+
+  /* ---------- ROUTER ---------- */
+  var top=$("top"), burger=$("burger");
+  function closeMenus(){document.querySelectorAll(".menu li.open").forEach(function(li){li.classList.remove("open");var b=li.querySelector("button");if(b)b.setAttribute("aria-expanded","false")})}
+  function route(){
+    var h=(location.hash||"").slice(1)||"beranda";
+    var target=document.querySelector('.page[data-page="'+h+'"]');
+    if(!target){h="beranda";target=document.querySelector('.page[data-page="beranda"]')}
+    document.querySelectorAll(".page").forEach(function(p){p.hidden=(p!==target)});
+    var g=target.dataset.grp;
+    document.querySelectorAll(".menu>li").forEach(function(li){li.classList.toggle("on",li.dataset.grp===g)});
+    closeMenus(); top.classList.remove("nav-open"); burger.setAttribute("aria-expanded","false");
+    window.scrollTo(0,0);
+    startSlider(h==="beranda");
+  }
+  addEventListener("hashchange",route);
+  document.querySelectorAll(".menu>li>button").forEach(function(b){
+    b.addEventListener("click",function(e){e.stopPropagation();var li=b.parentNode,was=li.classList.contains("open");closeMenus();if(!was){li.classList.add("open");b.setAttribute("aria-expanded","true")}});
+  });
+  document.addEventListener("click",function(e){if(!e.target.closest(".menu"))closeMenus()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMenus()});
+  burger.addEventListener("click",function(){var o=top.classList.toggle("nav-open");burger.setAttribute("aria-expanded",o?"true":"false")});
+  document.querySelectorAll(".menu a").forEach(function(a){a.addEventListener("click",function(){if(a.getAttribute("href")===location.hash)route()})});
+
+  /* ---------- SLIDER ---------- */
+  var slides=[].slice.call(document.querySelectorAll(".slide")), cur=0, timer=null, dots=$("dots");
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  slides.forEach(function(s,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Slide "+(i+1));b.addEventListener("click",function(){show(i);startSlider(true)});dots.appendChild(b)});
+  function show(i){cur=i;slides.forEach(function(s,j){s.hidden=j!==i});[].forEach.call(dots.children,function(d,j){d.setAttribute("aria-current",j===i?"true":"false")})}
+  function startSlider(on){clearInterval(timer);if(on&&!reduce)timer=setInterval(function(){show((cur+1)%slides.length)},7000)}
+  show(0);
+
+  /* ---------- PENGADUAN ---------- */
+  $("f-aduan").addEventListener("submit",function(e){
+    e.preventDefault();
+    var n=$("a-nama").value.trim(), isi=$("a-isi").value.trim();
+    $("a-err").hidden=!!(n&&isi); if(!n||!isi)return;
+    $("a-hasil").textContent="Om Swastyastu,\n\nKepada Yth. Prajuru Desa Adat Kelusa\n\nJenis: "+$("a-jenis").value+"\nNama: "+n+"\nBanjar: "+$("a-banjar").value+"\n\n"+isi+"\n\nOm Shanti Shanti Shanti Om";
+  });
+  function copyEl(el,btn,label){
+    function done(){btn.textContent="Tersalin";setTimeout(function(){btn.textContent=label},1600)}
+    function fb(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Terpilih, tekan salin"}
+    try{navigator.clipboard.writeText(el.textContent).then(done,fb)}catch(x){fb()}
+  }
+  $("a-copy").addEventListener("click",function(){copyEl($("a-hasil"),this,"Salin teks")});
+  document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){copyEl($(b.dataset.copy),b,"Salin")})});
+
+  route();
+
+  /* ---------- API SUCI (kanvas slide 1) ---------- */
+  var c=$("api"); if(!c||!c.getContext)return;
+  var ctx=c.getContext("2d"),P=[],W=0,H=0;
+  function size(){var r=c.getBoundingClientRect(),dpr=Math.min(2,window.devicePixelRatio||1);W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function spawn(){return {x:W*(.35+Math.random()*.3),y:H*.98,vx:(Math.random()-.5)*.4,vy:-(.6+Math.random()*1.4),r:1+Math.random()*2.4,life:1}}
+  size(); addEventListener("resize",size);
+  for(var i=0;i<70;i++){var p=spawn();p.y=H*(.4+Math.random()*.6);p.life=Math.random();P.push(p)}
+  function frame(){
+    if(!W){size()}
+    ctx.clearRect(0,0,W,H);
+    P.forEach(function(p,i){p.x+=p.vx+Math.sin((p.y+i)*.03)*.3;p.y+=p.vy;p.life-=.006;if(p.life<=0||p.y<H*.15){P[i]=spawn();return}
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle="rgba(240,"+Math.round(150+80*p.life)+",90,"+(p.life*.8).toFixed(2)+")";ctx.fill()});
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+
+</body>
+</html>
