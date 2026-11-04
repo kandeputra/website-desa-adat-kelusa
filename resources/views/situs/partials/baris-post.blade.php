@@ -1,0 +1,1 @@
+<a class="row" href="{{ $p->url() }}"><time>{{ tgl($p->published_at) }}</time><div><b>{{ $p->title }}</b><span class="s">{{ $p->ringkasan(90) }}</span></div><span class="kode">{{ \App\Models\Post::TYPES[$p->type] }}</span></a>
